@@ -1,0 +1,1 @@
+Mari kita mencoba membuat sebuah mekanisme simple ajax counter dengan menggunakan script pemrograman php

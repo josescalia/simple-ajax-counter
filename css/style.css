@@ -1,0 +1,17 @@
+body {font-family: verdana, tahoma, sans-serif; font-size: 14px;}
+
+.main { margin: 0 auto; width: 500px; border: 1px solid #add8e6; padding-bottom:30px;}
+
+.main h4{text-align: center;font-variant: small-caps;}
+
+.outer-status { margin: 10px auto; width: 350px; border: 1px solid #add8e6;}
+
+.status {padding: 5px;}
+
+.outer-status-like {font-size: 12px;height: 24px; border-top: 1px solid #add8e6;background-color: rgba(202, 226, 252, 0.45);}
+
+.outer-status-like img {margin: 3px 5px 2px 5px; float: left;}
+
+.like_tools {float: right;margin: 3px 5px 2px 0;}
+
+.like_counter {float: left;margin: 3px 5px 2px 0;}

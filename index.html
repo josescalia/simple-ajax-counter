@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/style.css"/>
+    <style type="text/css">
+
+    </style>
+    <title></title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //------------ambil semua data status dan attribut like-nya--------------------------//
+            $.get("status-data-source/status_1.txt", function (data) {
+                $("#cmnt_01").html(data);
+                $.get("scripts/vote_tools.php?act=read&file_to_read=status_1.txt", function (likeData) {
+                    $("#cmnt_01").next(".outer-status-like").children(".like_counter").append(likeData)
+                });
+            });
+
+
+            $.get("status-data-source/status_2.txt", function (data) {
+                $("#cmnt_02").html(data);
+                $.get("scripts/vote_tools.php?act=read&file_to_read=status_2.txt", function (likeData) {
+                    $("#cmnt_02").next(".outer-status-like").children(".like_counter").append(likeData)
+                });
+            });
+
+            //-----------------------------------------------------------------------------------//
+
+            //lakukan penghitungan jika user mengklik tombol suka dan ambil hasil penghitungan dengan
+            // ajax
+            $(".btnLike").click(function(){
+                var fileToVote = $(this).attr("title");
+                var elToSync = $(this).parent(".like_tools").prev();  //cursor mundur ke parent dan sebelumnya
+                $.get("scripts/vote_tools.php?act=write&file_to_read="+fileToVote+"", function (likeData) {
+                    $(elToSync).html(likeData);
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div class="main">
+    <h4>Simple Ajax Counter</h4>
+    <div class="outer-status">
+        <div id="cmnt_01" class="status">
+        </div>
+        <div class="outer-status-like">
+            <img src='images/icon-fb-like-s.png' height='16px' width='16px'>
+
+            <div class="like_counter"></div>
+            <div class="like_tools">
+                <a href="#" class="btnLike" title="status_1.txt">Like</a>
+            </div>
+        </div>
+    </div>
+    <div class="outer-status">
+        <div id="cmnt_02" class="status">
+        </div>
+        <div class="outer-status-like">
+            <img src='images/icon-fb-like-s.png' height='16px' width='16px'>
+            <div class="like_counter"></div>
+            <div class="like_tools"><a href="#" class="btnLike" title="status_2.txt">Like</a></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
